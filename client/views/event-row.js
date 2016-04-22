@@ -52,6 +52,10 @@ class Event extends Component {
     deleteEvent(event.id, this.props.buttonClicked);
   }
 
+  editEvent(event) {
+    console.log('edit event');
+  }
+
   displayTime(time) {
     var dateTime = time.toString();
     var hours = dateTime.substring(16,18);
@@ -73,7 +77,7 @@ class Event extends Component {
 
        <Text style={styles.accordianHeader}>
         <Icon name='android-walk' size={25}></Icon>
-        <Text style='paddingLeft: 25'>  Directions</Text>
+        <Text style={styles.padLeft}>  Directions</Text>
        </Text>
         
       </View>
@@ -88,6 +92,12 @@ class Event extends Component {
 
     return (
       <View style={styles.EventContainer}>
+        <View style={styles.EventButtonRow}>
+          <Icon name="edit" style={styles.buttonStyle} onPress={this.editEvent.bind(this, this.props.event)}></Icon>
+          <View style={styles.ButtonEnd}>
+            <Icon name="android-cancel" style={styles.deleteButton} onPress={this.removeEvent.bind(this, this.props.event)}></Icon> 
+          </View> 
+        </View> 
         <View style={styles.EventRow}>
           <Text style={styles.EventTitle}>Event:</Text>
           <View style={styles.EventInput}>
@@ -105,12 +115,7 @@ class Event extends Component {
           <View style={styles.EventInput}>
             <Text style={styles.EventText}>{this.props.event.mode}</Text>
           </View>
-        </View>   
-        <View style={styles.EventRow}>
-          <Icon.Button name="android-cancel" backgroundColor="#cc0000" onPress={this.removeEvent.bind(this, this.props.event)}>
-            <Text style={styles.buttonText}>Delete</Text>
-          </Icon.Button>  
-        </View>       
+        </View>         
         <Accordion
           header={header}
           content={content}
@@ -123,15 +128,40 @@ class Event extends Component {
 };
 
 const styles = StyleSheet.create({
+  buttonStyle: {
+    borderRadius: 0,
+    marginRight: 15,
+    color: "#FFFFFF",
+  },
+  deleteButton : {
+    borderRadius: 0,
+    color: "#cc0000",
+  },
   EventContainer: {
     flex: 1,
     margin: 7,
+    marginTop: 0,
     padding: 15,
     borderWidth: 1,
     borderColor: 'transparent',
     borderBottomColor: '#F5F5F6',
   },
   EventRow: {
+    flex: 1,
+    flexDirection:'row',
+  },
+  Event2Row: {
+    flex: .6,
+    flexDirection:'row',
+  },
+  EventButtonRow: {
+    flex: 1,
+    // flexDirection:'row',
+    marginTop: -5,
+    alignItems: 'flex-end',
+    
+  },
+  ButtonEnd: {
     flex: 1,
     flexDirection:'row',
   },
@@ -171,13 +201,15 @@ const styles = StyleSheet.create({
     fontFamily: 'HelveticaNeue-Light',
   },
 
-  iconButton: {
-    padding: 15,
-    width: deviceWidth,
-    alignItems: 'center',
-    backgroundColor: '#34778A',
+  // iconButton: {
+  //   padding: 15,
+  //   width: deviceWidth,
+  //   alignItems: 'center',
+  //   backgroundColor: '#34778A',
+  // },
+  padLeft: {
+    paddingLeft: 25,
   },
-
   accordianHeader: {
     padding: 10,
     fontSize: 16,
