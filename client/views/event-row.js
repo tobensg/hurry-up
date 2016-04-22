@@ -49,7 +49,7 @@ class Event extends Component {
   }
 
   removeEvent(event) {
-    deleteEvent(event.id);
+    deleteEvent(event.id, this.props.buttonClicked);
   }
 
   displayTime(time) {
