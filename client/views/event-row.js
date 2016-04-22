@@ -49,8 +49,6 @@ class Event extends Component {
   }
 
   removeEvent(event) {
-    console.log('*******************in removeEvent*****************');
-    console.log(event.id);
     deleteEvent(event.id);
   }
 
