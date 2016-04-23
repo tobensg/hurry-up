@@ -24,7 +24,7 @@ class Event extends Component {
 
   constructor(props) {
     super(props);
-    console.log('event prop', this.props.event.eventName);
+    // console.log('event prop', this.props.event.eventName);
     this.state = {
       directions: 'unknown',
       toggleDirections: false
@@ -53,7 +53,7 @@ class Event extends Component {
   }
 
   editEvent(event) {
-    console.log('edit event', event.id);
+    // console.log('edit event', event.id);
     this.props.editClicked(event.id);
   }
 
@@ -108,7 +108,8 @@ class Event extends Component {
         <View style={styles.EventRow}>
           <Text style={styles.EventTitle}>Where: </Text>
           <View style={styles.EventInput}>
-            <Text style={styles.EventText}>{this.props.event.address} {this.props.event.city} {this.props.event.state}</Text>
+            <Text style={styles.EventText}>{this.props.event.address}</Text>
+            <Text style={styles.EventText}>{this.props.event.city} {this.props.event.state}</Text>
           </View>
         </View>
         <View style={styles.EventRow}>
